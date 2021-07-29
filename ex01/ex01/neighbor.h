@@ -17,6 +17,10 @@ private:
 	int _length = 0;
 
 public:
+	~Neighbor();
+	int getLength() { return _length; }
+	Vertex* getHead() { return _head; }
+	Vertex* getTail() { return _tail; }
 	void addHead(int vertex);
 	void addTail(int vertex);
 	void deleteNeighbor(int vertex);
