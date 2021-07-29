@@ -1,5 +1,14 @@
 #include "neighbor.h"
 
+Neighbor::~Neighbor() {
+	Vertex* temp = _head->next;
+	while (temp != nullptr) {
+		delete _head;
+		_head = temp;
+		temp = _head->next;
+	}
+}
+
 void Neighbor::addHead(int vertex) {
 	Vertex* temp = _head;
 	_head = new Vertex();
@@ -7,6 +16,7 @@ void Neighbor::addHead(int vertex) {
 	_head->next = temp;
 	_head->prev = nullptr;
 	temp->prev = _head;
+	_length++;
 }
 
 void Neighbor::addTail(int vertex) {
@@ -16,6 +26,7 @@ void Neighbor::addTail(int vertex) {
 	_tail->next = temp;
 	temp->prev = _tail;
 	_tail = temp;
+	_length++;
 }
 
 void Neighbor::deleteNeighbor(int vertex) {
@@ -27,6 +38,7 @@ void Neighbor::deleteNeighbor(int vertex) {
 		prev->next = next;
 		next->prev = prev;
 		delete temp;
+		_length--;
 	}
 }
 
