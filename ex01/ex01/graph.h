@@ -21,6 +21,8 @@ public:
 	void printGraph();
 	int isEmpty();
 	Graph* transpose();
+	DynamicArr<Neighbor> BFS(int vertex);
+	
 
 
 };

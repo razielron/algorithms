@@ -25,4 +25,5 @@ public:
 	void addTail(int vertex);
 	void deleteNeighbor(int vertex);
 	Vertex* find(int vertex);
+	bool isEmpty() { return !!_head; }
 };

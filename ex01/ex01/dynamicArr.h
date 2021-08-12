@@ -18,13 +18,13 @@ protected:
 	int _phySize;
 
 public:
-	DynamicArr(int size = 1);
+	DynamicArr();
 	DynamicArr(T);
 	DynamicArr(istream& in);
 	~DynamicArr();
 
 public:
-	// returns size of array
+	// returns logic size of array
 	int size() const { return _logSize; }
 	//returns array
 	T* getArr() { return _array; }
@@ -72,10 +72,8 @@ public:
 
 /*------------------------DynamicArr Functions Implementation------------------------*/
 template<class T>
-DynamicArr<T>::DynamicArr(int size) : _logSize(0), _phySize(size) {
-	if (size < 0) {
-		exit(-1);
-	}
+DynamicArr<T>::DynamicArr() : _logSize(0), _phySize(1) {
+
 	try {
 		_array = _phySize ? new T[_phySize] : nullptr;
 	}
@@ -84,6 +82,7 @@ DynamicArr<T>::DynamicArr(int size) : _logSize(0), _phySize(size) {
 		exit(1);
 	}
 };
+
 
 template<class T>
 DynamicArr<T>::DynamicArr(T element) : _logSize(1), _phySize(2) {
@@ -157,7 +156,7 @@ void DynamicArr<T>::erase(int pos) {
 
 template<class T>
 void DynamicArr<T>::insertAt(T element, int pos) {
-	if (pos > _logSize || pos < 0) {
+	if (pos < 0) {
 		exit(1);
 	}
 

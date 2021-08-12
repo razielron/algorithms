@@ -53,3 +53,33 @@ Graph* Graph::transpose() {
 	}
 	return transgender;
 }
+
+DynamicArr<Neighbor> Graph::BFS(int vertex) {
+	DynamicArr<int> d;
+	DynamicArr<Neighbor> L;
+	for (int i = 0; i <= _vertexArr.size(); i++) {
+		d.push_back(-1);
+	}
+	L[0].addTail(vertex);
+	d.insertAt(0, vertex);
+	int i = 0;
+	while (L[i].isEmpty()) {
+		Vertex* vertexL= L[i].getHead();
+		while (vertexL) {
+			Vertex* vertexLAdj = _vertexArr.at(vertexL->value).getHead();
+			while (vertexLAdj) {
+				if (d[vertexLAdj->value] == -1) {
+					d.insertAt(i+1, vertexLAdj->value);
+					if (L.size() <= i + 1) {
+						L.resize();
+					}
+					L.at(i + 1).addTail(vertexLAdj->value);
+				}
+			}
+		}
+		i = i + 1;
+	}
+
+	
+
+}
