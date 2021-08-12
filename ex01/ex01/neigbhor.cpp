@@ -42,6 +42,15 @@ void Neighbor::deleteNeighbor(int vertex) {
 	}
 }
 
+void Neighbor::deleteNeighbor(Vertex* v) {
+		Vertex* prev = v->prev;
+		Vertex* next = v->next;
+		prev->next = next;
+		next->prev = prev;
+		delete v;
+		_length--;
+}
+
 Vertex* Neighbor::find(int vertex) {
 	Vertex* temp = _head;
 

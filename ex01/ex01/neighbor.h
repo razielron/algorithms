@@ -8,6 +8,7 @@ typedef struct
 	int value;
 	Vertex* next;
 	Vertex* prev;
+	bool color = false;
 }Vertex;
 
 class Neighbor {
@@ -24,6 +25,7 @@ public:
 	void addHead(int vertex);
 	void addTail(int vertex);
 	void deleteNeighbor(int vertex);
+	void deleteNeighbor(Vertex* v);
 	Vertex* find(int vertex);
 	bool isEmpty() { return !!_head; }
 };
